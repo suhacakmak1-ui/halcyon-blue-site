@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Halcyon Blue builds AI, computer vision, IoT and enterprise software systems for public and private sector organisations.">
 <title>Halcyon Blue</title>
+<link rel="canonical" href="https://halcyonblue.ai/">
+<meta name="theme-color" content="#0a1522">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Halcyon Blue">
+<meta property="og:title" content="Halcyon Blue — AI, Image Processing & IoT Systems">
+<meta property="og:description" content="Halcyon Blue builds AI, computer vision, IoT and enterprise software systems for public and private sector organisations.">
+<meta property="og:url" content="https://halcyonblue.ai/">
+<meta property="og:image" content="https://halcyonblue.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Halcyon Blue — AI, Image Processing & IoT Systems">
+<meta name="twitter:description" content="Halcyon Blue builds AI, computer vision, IoT and enterprise software systems for public and private sector organisations.">
+<meta name="twitter:image" content="https://halcyonblue.ai/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -65,6 +82,7 @@ p{margin:0}
 .nav>a:hover,.nav .dd>a:hover{color:var(--brand-deep);background:var(--brand-soft)}
 .nav a.active{color:var(--brand-deep);background:var(--brand-soft)}
 .dd{position:relative}
+.dd::before{content:"";position:absolute;left:0;right:-160px;top:100%;height:18px}
 .dd .caret{font-size:10px;transition:.2s;color:var(--muted)}
 .dd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:300px;background:var(--ground);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px -24px rgba(10,21,34,.25);padding:10px;display:none;flex-direction:column;max-height:70vh;overflow:auto}
 .dd:hover .dd-menu,.dd:focus-within .dd-menu{display:flex}
@@ -114,6 +132,13 @@ p{margin:0}
 .rail::-webkit-scrollbar{display:none}
 .rail::after{content:"";flex:0 0 calc(50% - 170px)}
 .rail::before{content:"";flex:0 0 calc(50% - 170px)}
+.rail{cursor:grab}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.rail-arrow{position:absolute;top:50%;margin-top:-23px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--ground);color:var(--ink-2);display:grid;place-items:center;cursor:pointer;transition:.22s;font-size:18px;z-index:5;box-shadow:0 14px 34px -18px rgba(8,20,34,.35)}
+.rail-arrow:hover{background:var(--brand);border-color:var(--brand);color:#fff}
+.rail-arrow.left{left:-6px}
+.rail-arrow.right{right:-6px}
+@media (max-width:900px){.rail-arrow{display:none}}
 .card{scroll-snap-align:center;flex:0 0 min(340px,78vw);background:var(--ground);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s ease,opacity .35s ease,box-shadow .35s ease;transform:scale(.94);opacity:.55}
 .card.center{transform:scale(1.03) translateY(-6px);opacity:1;box-shadow:0 26px 54px -30px rgba(8,20,34,.4);border-color:color-mix(in srgb,var(--brand) 35%,var(--line))}
 .card-art{height:180px;position:relative;overflow:hidden;background:var(--surface-2)}
@@ -670,6 +695,12 @@ var SERVICES=[
   feats:["Detects anomalies in your processes in real time and alerts your team before issues grow","Analyses customer text, detects sentiment and intent, and classifies it automatically","Provides demand forecasting and predictive-maintenance planning based on historical data"],
   stack:["Python","TensorFlow","PyTorch","scikit-learn","OpenCV","ONNX","Hugging Face","MLflow"],
   uses:["Manufacturing & Quality Control","Healthcare & Medical Imaging","Finance & Risk Analysis","Retail & Demand Forecasting"]},
+ {slug:"automation",t:"AI Automation",
+  d:"Turn manual, repetitive work into something that runs itself. AI agents pull data from your systems, make decisions against your own rules and complete multi-step tasks end to end, from document processing to internal approvals, so your team spends time on the work that actually needs a person.",
+  hero:"photo-1526628953301-3e589a6a8b74",img2:"photo-1552664730-d307ca884978",sm:["photo-1581092160607-ee22621dd758","photo-1580927752452-89d86da3fa0a"],
+  feats:["Reads incoming documents, emails and forms, extracts the data and enters it into your systems without manual re-typing","Chains together the tools you already use — CRM, ERP, email, spreadsheets — so one request triggers every step automatically","Knows its own limits: routine cases complete end to end, anything unusual is flagged to a person with full context"],
+  stack:["LangChain","n8n","RPA","Python","REST APIs","Webhooks","Vector DB"],
+  uses:["Finance & Back-Office","Customer Support","HR & Onboarding","Operations & Approvals"]},
  {slug:"face",t:"Face Recognition & Biometric Security",
   d:"Know who is walking into your organisation before they arrive. Face recognition integrated with turnstiles, barriers and doors verifies identity in seconds, with no ID card or password needed. Active liveness detection blocks photo and video spoofing attacks.",
   hero:"photo-1500648767791-00dcc994a43e",img2:"photo-1558494949-ef010cbdcc31",sm:["photo-1555949963-ff9fe0c870eb","photo-1614064641938-3bbee52942c7"],
@@ -729,6 +760,7 @@ var HERO=[
 
 var STAGES=[
  {slug:"ai",c:"#7c6cf0"},
+ {slug:"automation",c:"#ff9f43"},
  {slug:"image-processing",c:"#2ecadf"},
  {slug:"gis",c:"#39d98a"},
  {slug:"digital-twin",c:"#a06cf0"}
@@ -889,6 +921,15 @@ function aiOverlay(){
     +'<span class="ring" style="left:58%;top:41%"></span>'
     +chip('ANOMALY 02:14','left:5%;bottom:11%')+chip('FORECAST 7d','right:4%;bottom:11%')+hud('MODEL LIVE');
 }
+function automationOverlay(){
+  var d="M4,74 L22,74 L22,52 L44,52 L44,76 L66,76 L66,38 L92,38",
+      pts=[[4,74,""],[22,52,""],[44,76,""],[66,38,""],[92,38,"end"]];
+  return '<span class="shade"></span>'
+    +svgWrap('<path d="'+d+'" fill="none" stroke="rgba(56,225,240,.28)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>'
+      +'<path class="ai-line" d="'+d+'" fill="none" stroke="#38e1f0" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5"/>')
+    +pts.map(function(p,i){return '<span class="rwp '+p[2]+(i===0?' pulse':'')+'" style="left:'+p[0]+'%;top:'+p[1]+'%"></span>';}).join("")
+    +chip('INVOICE.PDF &rarr; PROCESSED','left:5%;bottom:11%')+chip('3 STEPS AUTOMATED','right:4%;bottom:11%')+hud('AGENT RUNNING');
+}
 function faceOverlay(){
   var lm=[[41,36],[59,36],[50,55],[43,72],[57,72]];
   return '<span class="shade"></span>'
@@ -945,9 +986,9 @@ function scanOverlay(){
   return '<span class="shade"></span>'+pointCloud()+'<span class="sweep"></span>'
     +chip('POINT CLOUD &middot; LIVE SENSOR FEED','right:4%;bottom:11%')+hud('LIDAR SCAN');
 }
-var OVL={"image-processing":detOverlay,route:routeOverlay,ai:aiOverlay,face:faceOverlay,llm:llmOverlay,
+var OVL={"image-processing":detOverlay,route:routeOverlay,ai:aiOverlay,automation:automationOverlay,face:faceOverlay,llm:llmOverlay,
          iot:iotOverlay,gis:gisOverlay,mobile:mobileOverlay,kiosk:kioskOverlay};
-var ARTCLS={"image-processing":"det",route:"rtart",ai:"aiart",face:"faceart",llm:"llmart",
+var ARTCLS={"image-processing":"det",route:"rtart",ai:"aiart",automation:"autoart",face:"faceart",llm:"llmart",
             iot:"iotart",gis:"gisart",mobile:"mobart",kiosk:"kioskart"};
 function artHTML(s,w){
   var img=IMG(s.hero,w||900);
@@ -1076,7 +1117,7 @@ function renderHome(app){
   +'<section class="section" id="services"><div class="wrap">'
   +'<div class="section-head reveal"><span class="eyebrow">What we build</span><h2>Our Services</h2>'
   +'<p>Transforming your business processes through the power of technology.</p></div></div>'
-  +'<div class="rail-zone"><div class="rail" id="rail">'+SERVICES.map(svcCard).join("")+'</div></div>'
+  +'<div class="rail-zone"><button class="rail-arrow left" id="railPrev" aria-label="Previous services">‹</button><div class="rail" id="rail">'+SERVICES.map(svcCard).join("")+'</div><button class="rail-arrow right" id="railNext" aria-label="Next services">›</button></div>'
   +'<div class="dots" id="railDots"></div>'
   +'<div class="center-cta"><a class="btn btn-ghost" href="#/services">Our Services <span class="arrow">→</span></a></div>'
   +'</section>'
@@ -1182,14 +1223,15 @@ function initHome(){
   initHeroScroll();
 
   /* rail */
-  var rail=$("#rail"),railDots=$("#railDots"),cards=$$("#rail .card"),railTick;
+  var rail=$("#rail"),railDots=$("#railDots"),cards=$$("#rail .card"),railTick,railAuto,railResume,railCenter=1;
   cards.forEach(function(c,i){
     var d=el("button");d.setAttribute("aria-label","Go to service "+(i+1));
     if(i===0)d.setAttribute("aria-current","true");
-    on(d,"click",function(){centerCard(i);});
+    on(d,"click",function(){centerCard(i);pauseAuto();});
     railDots.appendChild(d);
   });
   function centerCard(i){
+    i=(i+cards.length)%cards.length;
     var card=cards[i];
     rail.scrollTo({left:card.offsetLeft-(rail.clientWidth-card.clientWidth)/2,behavior:reduce?"auto":"smooth"});
   }
@@ -1199,11 +1241,47 @@ function initHome(){
       var d=Math.abs(c.offsetLeft+c.clientWidth/2-mid);
       if(d<bd){bd=d;best=i;}
     });
+    railCenter=best;
     cards.forEach(function(c,i){c.classList.toggle("center",i===best);});
     $$("#railDots button").forEach(function(b,i){b.setAttribute("aria-current",i===best?"true":"false");});
   }
   on(rail,"scroll",function(){clearTimeout(railTick);railTick=setTimeout(markCenter,70);},{passive:true});
   centerCard(1);markCenter();
+
+  /* auto-advance, pauses on any manual interaction and resumes after a quiet spell */
+  function startAuto(){if(!reduce)railAuto=every(function(){centerCard(railCenter+1);},4200);}
+  function pauseAuto(){
+    if(railAuto){clearInterval(railAuto);railAuto=null;}
+    clearTimeout(railResume);railResume=setTimeout(startAuto,6000);
+  }
+  startAuto();
+
+  on($("#railPrev"),"click",function(){centerCard(railCenter-1);pauseAuto();});
+  on($("#railNext"),"click",function(){centerCard(railCenter+1);pauseAuto();});
+
+  /* mouse-drag scrolling, so trackpad-less mouse users can pull the rail directly */
+  (function(){
+    var down=false,startX=0,startScroll=0,moved=false;
+    on(rail,"mousedown",function(e){
+      down=true;moved=false;startX=e.pageX;startScroll=rail.scrollLeft;rail.classList.add("dragging");
+    });
+    on(window,"mousemove",function(e){
+      if(!down)return;
+      var dx=e.pageX-startX;
+      if(Math.abs(dx)>4)moved=true;
+      rail.scrollLeft=startScroll-dx;
+    });
+    on(window,"mouseup",function(){
+      if(!down)return;
+      down=false;rail.classList.remove("dragging");
+      if(moved){pauseAuto();markCenter();centerCard(railCenter);}
+    });
+    on(rail,"click",function(e){if(moved)e.preventDefault();},true);
+    on(rail,"mouseenter",function(){clearTimeout(railResume);if(railAuto){clearInterval(railAuto);railAuto=null;}});
+    on(rail,"mouseleave",function(){if(!down)pauseAuto();});
+    on(rail,"touchstart",function(){if(railAuto){clearInterval(railAuto);railAuto=null;}},{passive:true});
+    on(rail,"touchend",pauseAuto,{passive:true});
+  })();
 
   /* showcase */
   var showcase=$("#showcase"),layers=$$(".stage-layer"),panels=$$("#stagePanels .stage-panel"),navBtns=$$("#stageNav button");
