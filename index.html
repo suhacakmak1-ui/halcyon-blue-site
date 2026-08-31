@@ -695,12 +695,6 @@ var SERVICES=[
   feats:["Detects anomalies in your processes in real time and alerts your team before issues grow","Analyses customer text, detects sentiment and intent, and classifies it automatically","Provides demand forecasting and predictive-maintenance planning based on historical data"],
   stack:["Python","TensorFlow","PyTorch","scikit-learn","OpenCV","ONNX","Hugging Face","MLflow"],
   uses:["Manufacturing & Quality Control","Healthcare & Medical Imaging","Finance & Risk Analysis","Retail & Demand Forecasting"]},
- {slug:"automation",t:"AI Automation",
-  d:"Turn manual, repetitive work into something that runs itself. AI agents pull data from your systems, make decisions against your own rules and complete multi-step tasks end to end, from document processing to internal approvals, so your team spends time on the work that actually needs a person.",
-  hero:"photo-1526628953301-3e589a6a8b74",img2:"photo-1552664730-d307ca884978",sm:["photo-1581092160607-ee22621dd758","photo-1580927752452-89d86da3fa0a"],
-  feats:["Reads incoming documents, emails and forms, extracts the data and enters it into your systems without manual re-typing","Chains together the tools you already use — CRM, ERP, email, spreadsheets — so one request triggers every step automatically","Knows its own limits: routine cases complete end to end, anything unusual is flagged to a person with full context"],
-  stack:["LangChain","n8n","RPA","Python","REST APIs","Webhooks","Vector DB"],
-  uses:["Finance & Back-Office","Customer Support","HR & Onboarding","Operations & Approvals"]},
  {slug:"face",t:"Face Recognition & Biometric Security",
   d:"Know who is walking into your organisation before they arrive. Face recognition integrated with turnstiles, barriers and doors verifies identity in seconds, with no ID card or password needed. Active liveness detection blocks photo and video spoofing attacks.",
   hero:"photo-1500648767791-00dcc994a43e",img2:"photo-1558494949-ef010cbdcc31",sm:["photo-1555949963-ff9fe0c870eb","photo-1614064641938-3bbee52942c7"],
@@ -713,6 +707,12 @@ var SERVICES=[
   feats:["Scans thousands of pages in seconds and finds exactly the right answer","Learns your company jargon and industry terminology to give domain-specific answers","All data stays on your own servers, so no information ever leaves your infrastructure"],
   stack:["LangChain","LlamaIndex","RAG","Vector DB","Transformers","FastAPI","ChromaDB"],
   uses:["Corporate Knowledge Base","Document Analysis","Customer Service","Compliance & Regulation"]},
+ {slug:"automation",t:"AI Automation",
+  d:"Turn manual, repetitive work into something that runs itself. AI agents pull data from your systems, make decisions against your own rules and complete multi-step tasks end to end, from document processing to internal approvals, so your team spends time on the work that actually needs a person.",
+  hero:"photo-1526628953301-3e589a6a8b74",img2:"photo-1552664730-d307ca884978",sm:["photo-1581092160607-ee22621dd758","photo-1580927752452-89d86da3fa0a"],
+  feats:["Reads incoming documents, emails and forms, extracts the data and enters it into your systems without manual re-typing","Chains together the tools you already use — CRM, ERP, email, spreadsheets — so one request triggers every step automatically","Knows its own limits: routine cases complete end to end, anything unusual is flagged to a person with full context"],
+  stack:["LangChain","n8n","RPA","Python","REST APIs","Webhooks","Vector DB"],
+  uses:["Finance & Back-Office","Customer Support","HR & Onboarding","Operations & Approvals"]},
  {slug:"route",t:"Smart Routing & Optimisation",
   d:"Make more deliveries every day with fewer vehicles and less fuel. Traffic, weather and urgent changes are priced in live, the most efficient route reaches your drivers instantly, and customers get a realistic arrival time.",
   hero:"photo-1544620347-c4fd4a3d5957",img2:"photo-1449965408869-eaa3f722e40d",sm:["photo-1449965408869-eaa3f722e40d","photo-1502877338535-766e1452684a"],
@@ -759,7 +759,6 @@ var HERO=[
 ];
 
 var STAGES=[
- {slug:"ai",c:"#7c6cf0"},
  {slug:"automation",c:"#ff9f43"},
  {slug:"image-processing",c:"#2ecadf"},
  {slug:"gis",c:"#39d98a"},
