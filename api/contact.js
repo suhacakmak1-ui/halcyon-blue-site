@@ -15,6 +15,9 @@ const MAX = { name: 120, email: 200, phone: 40, company: 160, subject: 200, mess
 const RATE = { max: 4, windowMs: 60000 };
 const hits = new Map();
 
+// TEMP: surfaced in the error response while diagnosing delivery from Vercel.
+let lastFailure = "";
+
 function overRateLimit(key) {
   const now = Date.now();
   const recent = (hits.get(key) || []).filter((t) => now - t < RATE.windowMs);
@@ -56,10 +59,13 @@ async function viaFormSubmit(p, to) {
       message: p.message,
     }),
   });
-  const body = await res.json().catch(() => null);
+  const raw = await res.text();
+  let body = null;
+  try { body = JSON.parse(raw); } catch (_) {}
   const ok = body && (body.success === true || body.success === "true");
   if (!res.ok || !ok) {
-    console.error("[contact] FormSubmit rejected the enquiry", res.status, body && body.message);
+    console.error("[contact] FormSubmit rejected the enquiry", res.status, raw.slice(0, 300));
+    lastFailure = "formsubmit " + res.status + " " + ((body && body.message) || raw.slice(0, 80));
     return false;
   }
   return true;
@@ -137,10 +143,11 @@ module.exports = async function handler(req, res) {
     sent = key && from ? await viaResend(p, key, to, from) : await viaFormSubmit(p, to);
   } catch (err) {
     console.error("[contact] Delivery threw", err);
+    lastFailure = "threw " + String(err && err.message);
   }
 
   if (!sent) {
-    return res.status(502).json({ ok: false, error: "Sending failed." });
+    return res.status(502).json({ ok: false, error: "Sending failed.", debug: lastFailure });
   }
   return res.status(200).json({ ok: true });
 };
