@@ -1707,13 +1707,14 @@ function renderContact(app){
     if(btn.disabled)return;
     ok.hidden=true; err.hidden=true; btn.disabled=true;
     var label=btn.innerHTML; btn.textContent="Sending…";
-    fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-      name:$("#cf-name").value, email:$("#cf-mail").value, phone:$("#cf-phone").value,
-      company:$("#cf-co").value, subject:$("#cf-subj").value, message:$("#cf-msg").value,
-      website:$("#cf-web").value
+    /* Sent from the browser: FormSubmit's bot check blocks server-side calls from Vercel. */
+    fetch("https://formsubmit.co/ajax/hello@halcyonblue.ai",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({
+      _subject:"Website enquiry: "+$("#cf-subj").value, _template:"table", _replyto:$("#cf-mail").value, _honey:$("#cf-web").value,
+      name:$("#cf-name").value, email:$("#cf-mail").value, phone:$("#cf-phone").value||"not given",
+      company:$("#cf-co").value||"not given", subject:$("#cf-subj").value, message:$("#cf-msg").value
     })}).then(function(r){
       return r.json().catch(function(){return {};}).then(function(d){
-        if(!r.ok||!d.ok)throw new Error(d.error||"Sending failed.");
+        if(!r.ok||!(d.success===true||d.success==="true"))throw new Error("Sending failed.");
       });
     }).then(function(){
       form.reset(); ok.hidden=false;
