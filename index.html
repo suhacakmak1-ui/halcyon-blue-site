@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Halcyon Blue builds AI, computer vision, IoT and enterprise software systems for public and private sector organisations.">
-<title>Halcyon Blue</title>
+<title>Halcyon Blue | AI, Computer Vision &amp; IoT Systems</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Halcyon Blue","url":"https://halcyonblue.ai/","logo":"https://halcyonblue.ai/apple-touch-icon.png","image":"https://halcyonblue.ai/og-image.png","description":"Halcyon Blue builds AI, computer vision, IoT and enterprise software systems for public and private sector organisations."}</script>
 <link rel="canonical" href="https://halcyonblue.ai/">
 <meta name="theme-color" content="#0a1522">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -33,10 +34,11 @@
   --teal-tint:#eef7f7;
   --ink:#101720;
   --ink-2:#3c4a5a;
-  --muted:#66788c;
+  --muted:#5b6c80;
   --line:#e0e6ed;
   --brand:#37b3c8;
   --brand-deep:#1e93a8;
+  --brand-ink:#12697a;
   --brand-soft:#e2f4f7;
   --violet:#7c6cf0;
   --green:#39d98a;
@@ -52,7 +54,7 @@
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   margin:0;background:var(--ground);color:var(--ink);
   font-family:var(--display);font-size:16px;line-height:1.6;
@@ -79,7 +81,7 @@ p{margin:0}
 .brand span.b{color:var(--brand)}
 .nav{display:flex;align-items:center;gap:6px;margin-left:auto}
 .nav>a,.nav .dd>a{padding:10px 16px;border-radius:999px;font-size:15.5px;font-weight:600;color:var(--ink-2);transition:.2s;display:inline-flex;align-items:center;gap:6px}
-.nav>a:hover,.nav .dd>a:hover{color:var(--brand-deep);background:var(--brand-soft)}
+.nav>a:hover,.nav .dd>a:hover{color:var(--brand-ink);background:var(--brand-soft)}
 .nav a.active{color:var(--brand-deep);background:var(--brand-soft)}
 .dd{position:relative}
 .dd::before{content:"";position:absolute;left:0;right:-160px;top:100%;height:18px}
@@ -88,10 +90,10 @@ p{margin:0}
 .dd:hover .dd-menu,.dd:focus-within .dd-menu{display:flex}
 .dd:hover .caret{transform:rotate(180deg)}
 .dd-menu a{padding:10px 14px;border-radius:10px;font-size:14.5px;font-weight:500;color:var(--ink-2)}
-.dd-menu a:hover{background:var(--brand-soft);color:var(--brand-deep)}
+.dd-menu a:hover{background:var(--brand-soft);color:var(--brand-ink)}
 .header-tools{display:flex;align-items:center;gap:12px;padding-left:18px;border-left:1px solid var(--line);color:var(--muted)}
 .header-tools a{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;transition:.2s}
-.header-tools a:hover{color:var(--brand);background:var(--surface)}
+.header-tools a:hover{color:var(--brand-ink);background:var(--surface)}
 .lang{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--ink-2)}
 .menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:42px;height:42px;font-size:18px;cursor:pointer}
 
@@ -100,7 +102,7 @@ p{margin:0}
 .btn-primary{background:linear-gradient(100deg,var(--brand),var(--brand-deep));color:#fff;box-shadow:0 10px 26px -12px color-mix(in srgb,var(--brand) 90%,transparent)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px -14px color-mix(in srgb,var(--brand) 90%,transparent)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--ground)}
-.btn-ghost:hover{border-color:var(--brand);color:var(--brand-deep)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand-ink)}
 .btn-outline-light{border-color:rgba(255,255,255,.35);color:#fff}
 .btn-outline-light:hover{background:rgba(255,255,255,.1)}
 .arrow{transition:transform .22s}
@@ -303,7 +305,7 @@ p{margin:0}
 .foot-grid h4{font-size:15px;margin-bottom:18px}
 .foot-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
 .foot-grid a,.foot-grid li{color:var(--muted);font-size:14.5px}
-.foot-grid a:hover{color:var(--brand)}
+.foot-grid a:hover{color:var(--brand-ink)}
 .foot-about p{color:var(--muted);font-size:14.5px;margin-top:16px;max-width:34ch}
 .socials{display:flex;gap:10px;margin-top:22px}
 .socials a{width:38px;height:38px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:.22s;background:var(--ground)}
@@ -358,7 +360,7 @@ p{margin:0}
 .svc-nav .prev{justify-self:start}
 .svc-nav .next{justify-self:end}
 .svc-nav a{font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:8px}
-.svc-nav a:hover{color:var(--brand-deep)}
+.svc-nav a:hover{color:var(--brand-ink)}
 
 /* about */
 .about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:64px 0}
@@ -418,7 +420,7 @@ p{margin:0}
 .info-card svg{color:var(--brand)}
 .info-card h4{font-size:14.5px;margin:10px 0 4px}
 .info-card p,.info-card a{color:var(--muted);font-size:13.5px}
-.info-card a:hover{color:var(--brand-deep)}
+.info-card a:hover{color:var(--brand-ink)}
 
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -1746,7 +1748,7 @@ function route(){
   $$(".nav a[data-nav]").forEach(function(a){a.classList.toggle("active",a.dataset.nav===navKey);});
   watchReveal(app);
   $("#nav").classList.remove("open");
-  document.title="Halcyon Blue"+(navKey==="home"?"":" — "+navKey.charAt(0).toUpperCase()+navKey.slice(1));
+  document.title="Halcyon Blue"+(navKey==="home"?" | AI, Computer Vision & IoT Systems":" — "+navKey.charAt(0).toUpperCase()+navKey.slice(1));
 }
 window.addEventListener("hashchange",route);
 
